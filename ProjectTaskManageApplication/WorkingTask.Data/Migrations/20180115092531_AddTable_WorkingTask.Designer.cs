@@ -11,9 +11,10 @@ using WorkingTask.Data;
 namespace WorkingTask.Data.Migrations
 {
     [DbContext(typeof(TaskManageContext))]
-    partial class TaskManageContextModelSnapshot : ModelSnapshot
+    [Migration("20180115092531_AddTable_WorkingTask")]
+    partial class AddTable_WorkingTask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

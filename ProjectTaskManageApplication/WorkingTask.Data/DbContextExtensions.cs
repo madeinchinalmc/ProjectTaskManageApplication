@@ -46,6 +46,12 @@ namespace WorkingTask.Data
         {
             return await dbContext.Set<T>().FirstOrDefaultAsync(firstLambda);
         }
+        public static async Task<T> Add<T>(this DbContext dbContext,T t) where T : class, new()
+        {
+            var result = await dbContext.Set<T>().AddAsync(t);
+            dbContext.SaveChanges();
+            return result.Entity;
+        }
         public static async Task<int> SaveChanges(this DbContext dbContext)
         {
             try

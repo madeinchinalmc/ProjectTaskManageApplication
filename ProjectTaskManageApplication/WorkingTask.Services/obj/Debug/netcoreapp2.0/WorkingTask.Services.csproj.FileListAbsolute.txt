@@ -7,3 +7,5 @@ F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.S
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Services\obj\Debug\netcoreapp2.0\WorkingTask.Services.AssemblyInfo.cs
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Services\obj\Debug\netcoreapp2.0\WorkingTask.Services.dll
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Services\obj\Debug\netcoreapp2.0\WorkingTask.Services.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Services\bin\Debug\netcoreapp2.0\WorkingTask.Data.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Services\bin\Debug\netcoreapp2.0\WorkingTask.Data.pdb

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\WorkingTask.Data\WorkingTask.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="WorkTask\" />
+  </ItemGroup>
+
 </Project>
