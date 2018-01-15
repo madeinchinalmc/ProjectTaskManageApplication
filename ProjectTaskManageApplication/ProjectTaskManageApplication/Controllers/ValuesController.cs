@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectTaskManageApplication.Controllers
 {
     /// <summary>
     /// 测试Push
     /// </summary>
+    [Authorize(Policy = "SuperAdminOnly")]
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {

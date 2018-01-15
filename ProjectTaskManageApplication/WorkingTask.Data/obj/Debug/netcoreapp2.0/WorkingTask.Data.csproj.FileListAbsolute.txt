@@ -1,0 +1,9 @@
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\bin\Debug\netcoreapp2.0\WorkingTask.Data.deps.json
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\bin\Debug\netcoreapp2.0\WorkingTask.Data.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.csproj.CoreCompileInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.AssemblyInfoInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.AssemblyInfo.cs
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\bin\Debug\netcoreapp2.0\WorkingTask.Data.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.csprojResolveAssemblyReference.cache
