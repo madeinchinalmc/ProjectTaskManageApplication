@@ -23,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using ProjectTaskManageApplication.Controllers;
 using Microsoft.AspNetCore.Http;
+using WorkingTask.Services.Documents;
 
 namespace ProjectTaskManageApplication
 {
@@ -36,7 +37,7 @@ namespace ProjectTaskManageApplication
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             var contextString = Configuration.GetConnectionString("DefaultConnection");
             //连接数据库服务加入DI容器
@@ -82,18 +83,20 @@ namespace ProjectTaskManageApplication
             });
 
             //services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IDocumentService, DocumentService>();
 
             services.AddMvc();//.AddControllersAsServices()
-            //替换默认DI容器
-            var containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterModule<DefaultModule>();
-            ////属性注入控制器、、、
-            //containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
-            containerBuilder.Populate(services);
-            //containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
-            var container = containerBuilder.Build();
-            return new AutofacServiceProvider(container);
+            ////替换默认DI容器
+            //var containerBuilder = new ContainerBuilder();
+            //containerBuilder.RegisterModule<DefaultModule>();
+            //////属性注入控制器、、、
+            ////containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
+            //containerBuilder.Populate(services);
+            ////containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
+            //var container = containerBuilder.Build();
+            //return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
