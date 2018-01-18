@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "6effbad9401c8d874a383df76a0af6054e647500"
+    "signature": "00b4fdba42914091dd8683c7f20009f431b1e847"
   },
   "compilationOptions": {
     "defines": [
@@ -23,17 +23,45 @@
     ".NETCoreApp,Version=v2.0": {
       "ProjectTaskManageApplication/1.0.0": {
         "dependencies": {
+          "Autofac": "4.6.2",
+          "Autofac.Extensions.DependencyInjection": "4.2.0",
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "Swashbuckle.AspNetCore": "1.1.0",
-          "WorkingTask.Data": "1.0.0"
+          "WorkingTask.Data": "1.0.0",
+          "WorkingTask.Services": "1.0.0"
         },
         "runtime": {
           "ProjectTaskManageApplication.dll": {}
         },
         "compile": {
           "ProjectTaskManageApplication.dll": {}
+        }
+      },
+      "Autofac/4.6.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "System.ComponentModel": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.dll": {}
+        }
+      },
+      "Autofac.Extensions.DependencyInjection/4.2.0": {
+        "dependencies": {
+          "Autofac": "4.6.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4127,6 +4155,21 @@
           "WorkingTask.Data.dll": {}
         }
       },
+      "WorkingTask.Services/1.0.0": {
+        "dependencies": {
+          "Autofac": "4.6.2",
+          "Autofac.Extensions.DependencyInjection": "4.2.0",
+          "Microsoft.AspNetCore.All": "2.0.3",
+          "Microsoft.EntityFrameworkCore": "2.0.1",
+          "WorkingTask.Data": "1.0.0"
+        },
+        "runtime": {
+          "WorkingTask.Services.dll": {}
+        },
+        "compile": {
+          "WorkingTask.Services.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -4310,6 +4353,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Autofac/4.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wKI7F6+n45gqfq0T8FuB3hFzaCkuegiFo5in6uB1y2Ai9ZYcjue8yqk3yzyNEwBDS7AyvlTUGSoNovwpUuKqTw==",
+      "path": "autofac/4.6.2",
+      "hashPath": "autofac.4.6.2.nupkg.sha512"
+    },
+    "Autofac.Extensions.DependencyInjection/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cqBmgg9y7ahGbt7CPdvZFL6bA0PEwFyhIofUoUxEteZc+d0yNnE6ZvIWxHEM2F2HPJlC9SRnHWiZQq8r53moAw==",
+      "path": "autofac.extensions.dependencyinjection/4.2.0",
+      "hashPath": "autofac.extensions.dependencyinjection.4.2.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",
@@ -6468,6 +6525,11 @@
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
     },
     "WorkingTask.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WorkingTask.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

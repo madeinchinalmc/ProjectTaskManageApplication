@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="jquery.validate.js"></script>
+</head>
+<body>
+    <div id="index_Dialog" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="myCaseLableJH" aria-hidden="true">
+        <form id="index_form" name="indexUploadJH_form" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <b>请上传</b> <br />
+            图片上传:<input id="uploadifyID" name="uploadifyID" type="file" multiple="multiple" />
+        </form>
+        <input class="btn btn-primary" value="提交" type="button" onclick="javascript:indexFunction();" />
+    </div>
+    <script type="text/javascript">
+        //  认证必填框验证
+        function indexFunction() {
+            var Count = $("#uploadifyID").data('uploadify').queueData.queueLength;
+
+            if (lawyerCertificateJHCount <= 0) {
+                alert("请上传文件");
+                return;
+            }
+            $('#uploadifyID').uploadify('upload', '*');
+        }
+        //清除并且关闭窗体
+        function clearfromCasePassdata() {
+            // $("#index_form :input").not(":button, :submit, :reset, :hidden").val("").removeAttr("checked").remove("selected"); //核心
+            $("#index_Dialog").modal('hide');
+        }
+        $(function () {
+            //上传文书附件管理
+            loadFun();//初始化插件
+
+        })
+        //关闭上传图片窗体
+        function ClosePDFsee() {
+            $("#index_Dialog").modal('hide');
+        }
+
+
+        function loadFun() {
+            $('#uploadifyID').uploadify({
+                'swf': '/Scripts/uploadify/uploadify.swf',  //FLash文件路径
+                'buttonText': '浏  览',
+                'width': 40,                          // 按钮的宽度
+                'height': 15,                                //按钮文本
+                'uploader': '/TaskFile/UploadFile',        //处理文件上传Action
+                'queueID': 'lawyerCasefileQueue',           //队列的ID
+                'queueSizeLimit': 999,                          //队列最多可上传文件数量，默认为999
+                'auto': false,                                 //选择文件后是否自动上传，默认为true
+                'multi': false,                                 //是否为多选，默认为true
+                'removeCompleted': true,                       //是否完成后移除序列，默认为true
+                'fileSizeLimit': '0MB',
+                'fileTypeDesc': "Image Files",                 //Files 标识可以上传任意文件
+                'fileTypeExts': '*.jpg;*.png;*.gif;*.jpeg;', //允许上传的文件类型，限制弹出文件选择框里能选择的文件
+                'onQueueComplete': function (event, data) {                 //所有队列完成 后事件
+                    $('#uploadifyID').uploadify('cancel', '*');
+                },
+                'onUploadStart': function (file) {
+                    $('#uploadifyID').uploadify("settings", 'formData', {
+                        'Pass': $("#Pass").val(), Phone: $("#Phone").val(), no: $("#no").val(), name: $("#name").val(), fileIndex: file.index, filelength:
+
+                            $("#uploadifyID").data('uploadify').queueData.queueLength, intCount: file.index
+                    });
+                },
+                'onUploadError': function (event, queueId, fileObj, errorObj) {
+
+                },
+                'onUploadSuccess': function (file, data, respone) {
+                    data = JSON.parse(data);
+                    if (data.id == 2) {
+                        $("#index_Dialog").modal('hide');
+                        $('#IndexmediaForm').media({
+                            width: 500, height: 600,
+                            src: url
+                        });
+                        $("#newDialog").modal('show');
+                    }
+                    else {
+                        alert("上传失败，" + data.message);
+                    }
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

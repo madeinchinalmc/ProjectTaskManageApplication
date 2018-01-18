@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using WorkingTask.Services.Documents;
 
 namespace ProjectTaskManageApplication.Controllers
 {
@@ -14,6 +15,11 @@ namespace ProjectTaskManageApplication.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly IDocumentService _documentService;
+        public ValuesController(IDocumentService documentService)
+        {
+            _documentService = documentService;
+        }
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()

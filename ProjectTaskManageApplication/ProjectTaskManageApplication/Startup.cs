@@ -17,6 +17,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using WorkingTask.Data;
 using WorkingTask.Data.Models;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using ProjectTaskManageApplication.Controllers;
+using Microsoft.AspNetCore.Http;
 
 namespace ProjectTaskManageApplication
 {
@@ -30,7 +36,7 @@ namespace ProjectTaskManageApplication
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var contextString = Configuration.GetConnectionString("DefaultConnection");
             //连接数据库服务加入DI容器
@@ -42,6 +48,7 @@ namespace ProjectTaskManageApplication
             services.AddIdentity<TaskManageUser, TaskManageUserRole>()
                 .AddEntityFrameworkStores<TaskManageContext>()
                 .AddDefaultTokenProviders();
+
             //设置注册密码的规则
             services.Configure<IdentityOptions>(options =>
             {
@@ -68,30 +75,51 @@ namespace ProjectTaskManageApplication
             {
                 options.AddPolicy("SuperAdminOnly", policy => policy.RequireClaim("SuperAdminOnly"));
             });
-            services.AddMvc();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+
+            //services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+
+            services.AddMvc();//.AddControllersAsServices()
+            //替换默认DI容器
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterModule<DefaultModule>();
+            ////属性注入控制器、、、
+            //containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
+            containerBuilder.Populate(services);
+            //containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
+            var container = containerBuilder.Build();
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp)
         {
+            WorkingTask.Services.ServiceProvider.Provider = svp;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
+            
             app.UseAuthentication(); //加入认证中间件
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-            app.UseMvc();
+            app.UseMvc(routes=>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Operations}/{action=Index}/{id?}"
+                    );
+            });
         }
     }
 }

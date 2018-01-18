@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using WorkingTask.Data;
 using WorkingTask.Data.Models;
 
@@ -20,19 +22,21 @@ namespace WorkingTask.Services.Documents
             return result.Entity.Id;
         }
 
-        public int DelDocument(int Id)
+        public async Task DelDocument(int Id)
         {
-            throw new NotImplementedException();
+            var entityDocument = await _taskManageContext.First<DocumentInfo>(t => t.Id == Id);
+            await _taskManageContext.Del<DocumentInfo>(entityDocument);
         }
 
-        public IList<DocumentInfo> GetDelDocumentByPage(int pageIndex, int pageSize, out int totalCount, Expression<Func<DocumentInfo, bool>> whereLambda, bool isAsc, Expression<Func<DocumentInfo, int>> orderBy)
+        public  IList<DocumentInfo> GetDocumentByPage(int pageIndex, int pageSize, out int totalCount, Expression<Func<DocumentInfo, bool>> whereLambda, bool isAsc, Expression<Func<DocumentInfo, int>> orderBy)
         {
-            throw new NotImplementedException();
+            var entitys = _taskManageContext.PageAsQuery<DocumentInfo, int>(pageIndex, pageSize,out totalCount, whereLambda, isAsc, orderBy);
+            return entitys.ToList();
         }
 
-        public int UpDocument(DocumentInfo documentInfo)
+        public async Task UpDocument(DocumentInfo documentInfo)
         {
-            throw new NotImplementedException();
+            await _taskManageContext.Up<DocumentInfo>(documentInfo);
         }
     }
 }

@@ -30,6 +30,18 @@ namespace WorkingTask.Data
             }
             return temp.AsNoTracking();// 不要跟踪，提高查询性能
         }
+        /// <summary>
+        /// 查询返回List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dbContext"></param>
+        /// <param name="whereLambda"></param>
+        /// <returns></returns>
+        public static IQueryable<T> QueryList<T>(this DbContext dbContext, Expression<Func<T, bool>> whereLambda) where T : class, new()
+        {
+            IQueryable<T> temp = dbContext.Set<T>().Where(whereLambda);
+            return temp.AsNoTracking();
+        }
         public static async Task<bool> Exist<T>(this DbContext dbContext, Expression<Func<T, bool>> anyLambda) where T : class, new()
         {
             return await dbContext.Set<T>().AnyAsync(anyLambda);
@@ -49,8 +61,21 @@ namespace WorkingTask.Data
         public static async Task<T> Add<T>(this DbContext dbContext,T t) where T : class, new()
         {
             var result = await dbContext.Set<T>().AddAsync(t);
-            dbContext.SaveChanges();
+            await SaveChanges(dbContext);
             return result.Entity;
+        }
+
+
+
+        public static async Task Del<T>(this DbContext dbContext,T t) where T : class, new()
+        {
+            var result = dbContext.Set<T>().Remove(t);
+            await SaveChanges(dbContext);
+        }
+        public static async Task Up<T>(this DbContext dbContext, T t) where T : class, new()
+        {
+            dbContext.Set<T>().Update(t);
+            await SaveChanges(dbContext);
         }
         public static async Task<int> SaveChanges(this DbContext dbContext)
         {
@@ -72,5 +97,7 @@ namespace WorkingTask.Data
             }
 
         }
+
+
     }
 }
