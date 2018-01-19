@@ -31,6 +31,11 @@
             <param name="loginViewModel"></param>
             <returns></returns>
         </member>
+        <member name="T:ProjectTaskManageApplication.Controllers.TaskFileController">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ProjectTaskManageApplication.Controllers.TaskFileController.UploadFile(System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
             <summary>
             上传文件
@@ -41,6 +46,38 @@
         <member name="T:ProjectTaskManageApplication.Controllers.ValuesController">
             <summary>
             测试Push
+            </summary>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Filter.DisableFormValueModelBindingAttribute">
+            <summary>
+            禁用模型绑定
+            </summary>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Filter.DisableFormValueModelBindingAttribute.OnResourceExecuting(Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext)">
+            <summary>
+            再action执行前，禁用模型绑定
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Filter.GenerateAntiforgeryTokenCookieForAjaxAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Filter.GenerateAntiforgeryTokenCookieForAjaxAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Helper.MultipartRequestHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Models.UploadedData">
+            <summary>
+            
             </summary>
         </member>
     </members>

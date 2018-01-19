@@ -24,6 +24,9 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using ProjectTaskManageApplication.Controllers;
 using Microsoft.AspNetCore.Http;
 using WorkingTask.Services.Documents;
+using ProjectTaskManageApplication.Filter;
+using WorkingTask.Services.BaseDomain;
+using System.Reflection;
 
 namespace ProjectTaskManageApplication
 {
@@ -85,18 +88,32 @@ namespace ProjectTaskManageApplication
             //services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddScoped<IBaseAppService, BaseAppService>(pro =>   //假设我这里所有的接口，类分别继承自IBaseAppservice
+            //{
+            //    var dataAccess = Assembly.GetExecutingAssembly(); //拿到程序集
+            //    Type[] types = dataAccess.GetTypes();           //找到约定的接口
+            //    var checkTypes = types.Where(t => t.Name.Contains("IBaseAppService")).ToList();
+            //    return (BaseAppService)pro.GetService(checkTypes[0]);
+            //});
             services.AddScoped<IDocumentService, DocumentService>();
 
-            services.AddMvc();//.AddControllersAsServices()
-            ////替换默认DI容器
-            //var containerBuilder = new ContainerBuilder();
-            //containerBuilder.RegisterModule<DefaultModule>();
-            //////属性注入控制器、、、
-            ////containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
-            //containerBuilder.Populate(services);
-            ////containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
-            //var container = containerBuilder.Build();
-            //return new AutofacServiceProvider(container);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new SampleGlobalActionFilter());
+            });//.AddControllersAsServices()
+               ////替换默认DI容器
+               //var containerBuilder = new ContainerBuilder();
+               //containerBuilder.RegisterModule<DefaultModule>();
+               //////属性注入控制器、、、
+               ////containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
+               //containerBuilder.Populate(services);
+               ////containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
+               //var container = containerBuilder.Build();
+               //return new AutofacServiceProvider(container);
+
+
+            services.AddScoped<SampleControllerFilterAttribute>();
+            services.AddScoped<SampleActionFilterAttribute>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,6 +21,7 @@ namespace ProjectTaskManageApplication.Controllers
     /// <summary>
     /// 
     /// </summary>
+    [ServiceFilter(typeof(SampleControllerFilterAttribute))]
     public class TaskFileController : Controller
     {
         private readonly IDocumentService _documentService;
@@ -29,10 +30,13 @@ namespace ProjectTaskManageApplication.Controllers
         {
             _documentService = documentService;
         }
-        [HttpGet]
-        [GenerateAntiforgeryTokenCookieForAjax]
-        public IActionResult Index()
+        [HttpGet("Files/{fileId}")]
+        [ServiceFilter(typeof(SampleActionFilterAttribute))]
+        //[GenerateAntiforgeryTokenCookieForAjax]
+        public IActionResult Index(string fileId)
         {
+            string s = fileId;
+
             return View();
         }
         /// <summary>
