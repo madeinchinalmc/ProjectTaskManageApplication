@@ -24,8 +24,8 @@ namespace WorkingTask.Services.Documents
 
         public async Task DelDocument(int Id)
         {
-            var entityDocument = await _taskManageContext.First<DocumentInfo>(t => t.Id == Id);
-            await _taskManageContext.Del<DocumentInfo>(entityDocument);
+            var entityDocument = await _taskManageContext.CustomFirst<DocumentInfo>(t => t.Id == Id);
+            await _taskManageContext.CustomDel<DocumentInfo>(entityDocument);
         }
 
         public  IList<DocumentInfo> GetDocumentByPage(int pageIndex, int pageSize, out int totalCount, Expression<Func<DocumentInfo, bool>> whereLambda, bool isAsc, Expression<Func<DocumentInfo, int>> orderBy)
@@ -36,7 +36,7 @@ namespace WorkingTask.Services.Documents
 
         public async Task UpDocument(DocumentInfo documentInfo)
         {
-            await _taskManageContext.Up<DocumentInfo>(documentInfo);
+            await _taskManageContext.CustomUp<DocumentInfo>(documentInfo);
         }
     }
 }

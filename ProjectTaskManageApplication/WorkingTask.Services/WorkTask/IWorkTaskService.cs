@@ -10,13 +10,13 @@ namespace WorkingTask.Services.WorkTask
 {
     public interface IWorkTaskService
     {
-        WorkingTask.Data.Models.WorkingTask GetWrokTaskById(int Id);
+        Task<Data.Models.WorkingTask> GetWrokTaskById(int Id);
 
-        IList<Data.Models.WorkingTask> GetDocumentByPage(int pageIndex, int pageSize, out int totalCount,
+        IList<Data.Models.WorkingTask> GetWrokTaskByPage(int pageIndex, int pageSize, out int totalCount,
             Expression<Func<Data.Models.WorkingTask, bool>> whereLambda, bool isAsc, Expression<Func<Data.Models.WorkingTask, int>> orderBy);
 
-        int AddDocument(Data.Models.WorkingTask workingTask);
-        Task UpDocument(Data.Models.WorkingTask workingTask);
-        Task DelDocument(int Id);
+        Task<int> AddWrokTask(Data.Models.WorkingTask workingTask);
+        Task UpWrokTask(Data.Models.WorkingTask workingTask);
+        Task DelWrokTask(int Id);
     }
 }

@@ -42,23 +42,23 @@ namespace WorkingTask.Data
             IQueryable<T> temp = dbContext.Set<T>().Where(whereLambda);
             return temp.AsNoTracking();
         }
-        public static async Task<bool> Exist<T>(this DbContext dbContext, Expression<Func<T, bool>> anyLambda) where T : class, new()
+        public static async Task<bool> CustomExist<T>(this DbContext dbContext, Expression<Func<T, bool>> anyLambda) where T : class, new()
         {
             return await dbContext.Set<T>().AnyAsync(anyLambda);
         }
-        public static async Task<T> Find<T>(this DbContext dbContext, params object[] keyValues) where T : class, new()
+        public static async Task<T> CustomFind<T>(this DbContext dbContext, params object[] keyValues) where T : class, new()
         {
             return await dbContext.Set<T>().FindAsync(keyValues);
         }
-        public static async Task<int> Count<T>(this DbContext dbContext, Expression<Func<T, bool>> countLambda) where T : class, new()
+        public static async Task<int> CustomCount<T>(this DbContext dbContext, Expression<Func<T, bool>> countLambda) where T : class, new()
         {
             return await dbContext.Set<T>().CountAsync(countLambda);
         }
-        public static async Task<T> First<T>(this DbContext dbContext, Expression<Func<T, bool>> firstLambda) where T : class, new()
+        public static async Task<T> CustomFirst<T>(this DbContext dbContext, Expression<Func<T, bool>> firstLambda) where T : class, new()
         {
             return await dbContext.Set<T>().FirstOrDefaultAsync(firstLambda);
         }
-        public static async Task<T> Add<T>(this DbContext dbContext,T t) where T : class, new()
+        public static async Task<T> CustomAdd<T>(this DbContext dbContext,T t) where T : class, new()
         {
             var result = await dbContext.Set<T>().AddAsync(t);
             await SaveChanges(dbContext);
@@ -67,12 +67,12 @@ namespace WorkingTask.Data
 
 
 
-        public static async Task Del<T>(this DbContext dbContext,T t) where T : class, new()
+        public static async Task CustomDel<T>(this DbContext dbContext,T t) where T : class, new()
         {
             var result = dbContext.Set<T>().Remove(t);
             await SaveChanges(dbContext);
         }
-        public static async Task Up<T>(this DbContext dbContext, T t) where T : class, new()
+        public static async Task CustomUp<T>(this DbContext dbContext, T t) where T : class, new()
         {
             dbContext.Set<T>().Update(t);
             await SaveChanges(dbContext);

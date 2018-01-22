@@ -93,7 +93,7 @@ namespace ProjectTaskManageApplication
             //    var dataAccess = Assembly.GetExecutingAssembly(); //拿到程序集
             //    Type[] types = dataAccess.GetTypes();           //找到约定的接口
             //    var checkTypes = types.Where(t => t.Name.Contains("IBaseAppService")).ToList();
-            //    return (BaseAppService)pro.GetService(checkTypes[0]);
+            //    return (BaseAppService)pro.GetService(typeof(IBaseAppService));
             //});
             services.AddScoped<IDocumentService, DocumentService>();
 
