@@ -18,7 +18,13 @@ namespace WorkingTask.Services.WorkTask
         }
         public async Task<int> AddWrokTask(Data.Models.WorkingTask workingTask)
         {
-            var result =await _taskManageContext.CustomAdd(workingTask);
+            var result =await _taskManageContext.CustomAdd<Data.Models.WorkingTask>(workingTask);
+            await _taskManageContext.CustomAdd<WorkTaskSubmieOperations>(
+                new WorkTaskSubmieOperations
+                {
+
+
+                });
             return result.Id;
         }
 
@@ -50,10 +56,10 @@ namespace WorkingTask.Services.WorkTask
 
         public async Task UpWrokTask(Data.Models.WorkingTask workingTask)
         {
-            var delEntity = await _taskManageContext.CustomExist<Data.Models.WorkingTask>(t => t.Id == workingTask.Id);
-            if (delEntity)
+            var upEntity = await _taskManageContext.CustomExist<Data.Models.WorkingTask>(t => t.Id == workingTask.Id);
+            if (upEntity)
             {
-                await _taskManageContext.CustomDel(workingTask);
+                await _taskManageContext.CustomUp(workingTask);
             }
         }
     }

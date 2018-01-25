@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using WorkingTask.Data.BaseEnum;
 
 namespace WorkingTask.Data.Models
 {
@@ -19,7 +20,7 @@ namespace WorkingTask.Data.Models
         /// <summary>
         /// 任务状态
         /// </summary>
-        public string TaskState { get; set; }
+        public WorkTaskState WorkState { get; set; }
         /// <summary>
         /// 截止日期
         /// </summary>
@@ -29,7 +30,7 @@ namespace WorkingTask.Data.Models
         /// </summary>
         public DateTime CreateTime { get; set; }
         /// <summary>
-        /// 创建人
+        /// 创建人（开发组长）
         /// </summary>
         public string CreateUser { get; set; }
         /// <summary>

@@ -64,9 +64,6 @@ namespace WorkingTask.Data
             await SaveChanges(dbContext);
             return result.Entity;
         }
-
-
-
         public static async Task CustomDel<T>(this DbContext dbContext,T t) where T : class, new()
         {
             var result = dbContext.Set<T>().Remove(t);
@@ -97,7 +94,28 @@ namespace WorkingTask.Data
             }
 
         }
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static async Task ExecuteInsertOnTransaction<T1,T2>(this DbContext dbContext,T1 t1,T2 t2) 
+            where T1 : class, new()
+            where T2: class, new()
+        {
+            using(var transaction = dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                     dbContext.Set<T1>().Add(t1);
+                     dbContext.Set<T2>().Add(t2);
+                     await SaveChanges(dbContext);
+                     transaction.Commit();
+                }
+                catch(Exception ex)
+                {
+                    //log
+                }
+            }
+        }
     }
 }

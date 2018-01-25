@@ -8,5 +8,6 @@ namespace WorkingTask.Data.Models
 {
     public class TaskManageUser:IdentityUser
     {
+
     }
 }

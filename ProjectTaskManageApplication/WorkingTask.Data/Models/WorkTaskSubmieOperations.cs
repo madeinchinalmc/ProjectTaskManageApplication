@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using WorkingTask.Data.BaseEnum;
 
 namespace WorkingTask.Data.Models
 {
+    /// <summary>
+    /// 任务操作记录
+    /// </summary>
     public class WorkTaskSubmieOperations
     {
         [Key]
@@ -14,7 +18,7 @@ namespace WorkingTask.Data.Models
         /// <summary>
         /// 任务状态
         /// </summary>
-        public string TaskState { get; set; }
+        public WorkTaskState TaskState { get; set; }
         /// <summary>
         /// 任务类型
         /// </summary>

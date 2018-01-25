@@ -8,12 +8,12 @@ namespace WorkingTask.Services.WorkTask
 {
     public interface ITaskItemService
     {
-        WorkingTask.Data.Models.WorkingTaskItems GetWrokTaskById(int Id);
+        WorkingTask.Data.Models.WorkingTaskItems GetWrokTaskItemById(int Id);
 
-        IList<Data.Models.WorkingTaskItems> GetDocumentByPage(int workTaskId);
+        IList<Data.Models.WorkingTaskItems> GetTaskItemByTask(int workTaskId);
 
-        int AddDocument(Data.Models.WorkingTaskItems taskItems);
-        Task UpDocument(Data.Models.WorkingTaskItems taskItems);
-        Task DelDocument(int Id);
+        Task<int> AddTaskItem(Data.Models.WorkingTaskItems taskItems);
+        Task UpTaskItem(Data.Models.WorkingTaskItems taskItems);
+        Task DelTaskItem(int Id);
     }
 }
