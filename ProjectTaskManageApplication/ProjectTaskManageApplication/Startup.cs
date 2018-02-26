@@ -27,6 +27,11 @@ using WorkingTask.Services.Documents;
 using ProjectTaskManageApplication.Filter;
 using WorkingTask.Services.BaseDomain;
 using System.Reflection;
+using WorkingTask.Services.TaskGroups;
+using WorkingTask.Services.WorkTask;
+using System.Runtime.CompilerServices;
+using ProjectTaskManageApplication.Helper;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ProjectTaskManageApplication
 {
@@ -49,7 +54,10 @@ namespace ProjectTaskManageApplication
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             //将Identity服务加入DI容器
-            services.AddIdentity<TaskManageUser, TaskManageUserRole>()
+            services.AddIdentity<TaskManageUser, TaskManageUserRole>(options => {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;     //和下面的设置密码规则一样的效果
+            })
                 .AddEntityFrameworkStores<TaskManageContext>()
                 .AddDefaultTokenProviders();
 
@@ -88,15 +96,14 @@ namespace ProjectTaskManageApplication
             //services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddScoped<IBaseAppService, BaseAppService>(pro =>   //假设我这里所有的接口，类分别继承自IBaseAppservice
-            //{
-            //    var dataAccess = Assembly.GetExecutingAssembly(); //拿到程序集
-            //    Type[] types = dataAccess.GetTypes();           //找到约定的接口
-            //    var checkTypes = types.Where(t => t.Name.Contains("IBaseAppService")).ToList();
-            //    return (BaseAppService)pro.GetService(typeof(IBaseAppService));
-            //});
-            services.AddScoped<IDocumentService, DocumentService>();
+            services.RegisterAssembly("Service");
+            services.Configure<MemoryCacheEntryOptions>(
+                options => options.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5));
 
+            //services.AddScoped<IDocumentService, DocumentService>();
+            //services.AddScoped<ITaskGroupService, TaskGroupService>();
+            //services.AddScoped<ITaskItemService, TaskItemService>();
+            services.AddSession();
             services.AddMvc(options =>
             {
                 options.Filters.Add(new SampleGlobalActionFilter());
@@ -114,6 +121,7 @@ namespace ProjectTaskManageApplication
 
             services.AddScoped<SampleControllerFilterAttribute>();
             services.AddScoped<SampleActionFilterAttribute>();
+            //return services.BuilderInterceptableServiceProvider(builder => builder.SetDynamicProxyFactory());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +132,7 @@ namespace ProjectTaskManageApplication
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSession();
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
             

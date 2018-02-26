@@ -75,6 +75,39 @@
             
             </summary>
         </member>
+        <member name="T:ProjectTaskManageApplication.Helper.RuntimeHelper">
+            <summary>
+            获取程序集帮助类
+            </summary>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Helper.RuntimeHelper.GetAllAssemblies">
+            <summary>
+            拿到所有程序集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Helper.ServiceExtension">
+            <summary>
+            IServiceCollection扩展
+            </summary>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Helper.ServiceExtension.RegisterAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            DI批量注入接口程序集中对应的实现类
+            </summary>
+            <param name="service"></param>
+            <param name="interfaceAssemblyName">接口程序集的名称（不包含文件扩展名）</param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Helper.ServiceExtension.RegisterAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String)">
+            <summary>
+            用DI批量注入接口程序集中对应的实现类。
+            </summary>
+            <param name="service"></param>
+            <param name="interfaceAssemblyName"></param>
+            <param name="implementAssemblyName"></param>
+            <returns></returns>
+        </member>
         <member name="T:ProjectTaskManageApplication.Models.UploadedData">
             <summary>
             

@@ -22,8 +22,7 @@ namespace WorkingTask.Services.WorkTask
             await _taskManageContext.CustomAdd<WorkTaskSubmieOperations>(
                 new WorkTaskSubmieOperations
                 {
-
-
+                    
                 });
             return result.Id;
         }

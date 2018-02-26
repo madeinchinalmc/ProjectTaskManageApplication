@@ -50,6 +50,9 @@ namespace ProjectTaskManageApplication.Controllers
             var result = await _userManager.FindByNameAsync(loginViewModel.Name);
             if (result==null)
                 return BadRequest();
+            var resultSigIn = await _signInManager.PasswordSignInAsync(loginViewModel.Name, loginViewModel.PassWord, true, false);
+            if (!resultSigIn.Succeeded)
+                return BadRequest();
             var claims = new Claim[]                //实例化一个Claim
             {
                 new Claim(ClaimTypes.Name,"lmc"),
@@ -61,7 +64,8 @@ namespace ProjectTaskManageApplication.Controllers
             //生成token，设置过期时间为30分钟， 需要引用System.IdentityModel.Tokens.Jwt 包
             var token = new JwtSecurityToken(_jwtSettings.Issuer, _jwtSettings.Audience, claims, DateTime.Now, DateTime.Now.AddMinutes(30), creds);
             //将token返回
-            return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+
+            return Json(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
         /// <summary>
         /// 
