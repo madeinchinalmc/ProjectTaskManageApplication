@@ -8,5 +8,7 @@ namespace WorkingTask.Data.Models
 {
     public class TaskManageUserRole: IdentityRole
     {
+        public TaskManageUserRole() { }
+        public TaskManageUserRole(string RoleName):base(RoleName) { }
     }
 }

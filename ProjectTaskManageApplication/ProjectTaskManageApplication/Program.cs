@@ -55,5 +55,7 @@ namespace ProjectTaskManageApplication
                 //var component = container.Resolve<MyComponent>();
             }
         }
+
+
     }
 }

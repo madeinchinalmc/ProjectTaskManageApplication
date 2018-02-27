@@ -11,7 +11,7 @@ namespace ProjectTaskManageApplication.Controllers
     /// <summary>
     /// 测试Push
     /// </summary>
-    [Authorize(Policy = "SuperAdminOnly")]
+    [Authorize(Roles ="admin")]
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
@@ -20,6 +20,7 @@ namespace ProjectTaskManageApplication.Controllers
         {
             _documentService = documentService;
         }
+        
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()

@@ -9,13 +9,14 @@
             
             </summary>
         </member>
-        <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.#ctor(Microsoft.Extensions.Options.IOptions{ProjectTaskManageApplication.Models.JwtSettings},Microsoft.AspNetCore.Identity.UserManager{WorkingTask.Data.Models.TaskManageUser},Microsoft.AspNetCore.Identity.SignInManager{WorkingTask.Data.Models.TaskManageUser})">
+        <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.#ctor(Microsoft.Extensions.Options.IOptions{ProjectTaskManageApplication.Models.JwtSettings},Microsoft.AspNetCore.Identity.UserManager{WorkingTask.Data.Models.TaskManageUser},Microsoft.AspNetCore.Identity.SignInManager{WorkingTask.Data.Models.TaskManageUser},Microsoft.AspNetCore.Identity.RoleManager{WorkingTask.Data.Models.TaskManageUserRole})">
             <summary>
             
             </summary>
             <param name="options"></param>
             <param name="userManager"></param>
             <param name="signInManager"></param>
+            <param name="roleManager"></param>
         </member>
         <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.Index(ProjectTaskManageApplication.ViewModel.LoginViewModel)">
             <summary>
@@ -29,6 +30,27 @@
             
             </summary>
             <param name="loginViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.LogOut">
+            <summary>
+            登出，api不需要
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.AddRole(System.String)">
+            <summary>
+            创建一个角色
+            </summary>
+            <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Controllers.AuthorizeController.UpRoleForUser(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="UserName"></param>
+            <param name="roleName"></param>
             <returns></returns>
         </member>
         <member name="T:ProjectTaskManageApplication.Controllers.TaskFileController">
@@ -46,6 +68,11 @@
         <member name="T:ProjectTaskManageApplication.Controllers.ValuesController">
             <summary>
             测试Push
+            </summary>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Filter.AuthorityFilterAttribute">
+            <summary>
+            检验权限和登录的filter
             </summary>
         </member>
         <member name="T:ProjectTaskManageApplication.Filter.DisableFormValueModelBindingAttribute">
@@ -107,6 +134,16 @@
             <param name="interfaceAssemblyName"></param>
             <param name="implementAssemblyName"></param>
             <returns></returns>
+        </member>
+        <member name="T:ProjectTaskManageApplication.Models.TokenModel">
+            <summary>
+            token模板
+            </summary>
+        </member>
+        <member name="P:ProjectTaskManageApplication.Models.TokenModel.token">
+            <summary>
+            token
+            </summary>
         </member>
         <member name="T:ProjectTaskManageApplication.Models.UploadedData">
             <summary>

@@ -32,18 +32,23 @@ using WorkingTask.Services.WorkTask;
 using System.Runtime.CompilerServices;
 using ProjectTaskManageApplication.Helper;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace ProjectTaskManageApplication
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Environment = env; 
         }
 
         public IConfiguration Configuration { get; }
 
+        private IHostingEnvironment Environment { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -61,9 +66,19 @@ namespace ProjectTaskManageApplication
                 .AddEntityFrameworkStores<TaskManageContext>()
                 .AddDefaultTokenProviders();
 
+            //var skipHTTPS = Configuration.GetValue<bool>("LocalTest:skipHTTPS");
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    if (Environment.IsDevelopment() && !skipHTTPS)
+            //    {
+            //        options.Filters.Add(new RequireHttpsAttribute());
+            //    }
+            //});
+
             //设置注册密码的规则
             services.Configure<IdentityOptions>(options =>
             {
+                options.Password.RequiredLength = 6;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
@@ -87,41 +102,23 @@ namespace ProjectTaskManageApplication
             {
                 options.AddPolicy("SuperAdminOnly", policy => policy.RequireClaim("SuperAdminOnly"));
             });
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
-
-            //services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.RegisterAssembly("Service");
             services.Configure<MemoryCacheEntryOptions>(
                 options => options.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5));
-
-            //services.AddScoped<IDocumentService, DocumentService>();
-            //services.AddScoped<ITaskGroupService, TaskGroupService>();
-            //services.AddScoped<ITaskItemService, TaskItemService>();
             services.AddSession();
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(new SampleGlobalActionFilter());
-            });//.AddControllersAsServices()
-               ////替换默认DI容器
-               //var containerBuilder = new ContainerBuilder();
-               //containerBuilder.RegisterModule<DefaultModule>();
-               //////属性注入控制器、、、
-               ////containerBuilder.RegisterType<AutoDIController>().PropertiesAutowired();
-               //containerBuilder.Populate(services);
-               ////containerBuilder.RegisterType<TaskFileController>().PropertiesAutowired();
-               //var container = containerBuilder.Build();
-               //return new AutofacServiceProvider(container);
-
-
-            services.AddScoped<SampleControllerFilterAttribute>();
-            services.AddScoped<SampleActionFilterAttribute>();
-            //return services.BuilderInterceptableServiceProvider(builder => builder.SetDynamicProxyFactory());
+            services.AddMvc();
+            //services.AddMvc(config =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //                        .RequireAuthenticatedUser()
+            //                        .Build();
+            //    config.Filters.Add(new AuthorizeFilter(policy));
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
