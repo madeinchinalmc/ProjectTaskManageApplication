@@ -5154,12 +5154,23 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "WoringTask.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/WoringTask.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WoringTask.Core.dll": {}
+        }
+      },
       "WorkingTask.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.3",
-          "Microsoft.EntityFrameworkCore": "2.0.1"
+          "Microsoft.EntityFrameworkCore": "2.0.1",
+          "WoringTask.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/WorkingTask.Data.dll": {}
@@ -13350,6 +13361,11 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "WoringTask.Core/1.0.0": {
+      "type": "project",
+      "path": "../WoringTask.Core/WoringTask.Core.csproj",
+      "msbuildProject": "../WoringTask.Core/WoringTask.Core.csproj"
     },
     "WorkingTask.Data/1.0.0": {
       "type": "project",
