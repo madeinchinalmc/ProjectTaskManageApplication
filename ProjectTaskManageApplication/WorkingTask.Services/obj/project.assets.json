@@ -12620,6 +12620,7 @@
       "Microsoft.AspNetCore.All >= 2.0.3",
       "Microsoft.EntityFrameworkCore >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
+      "WoringTask.Core >= 1.0.0",
       "WorkingTask.Data >= 1.0.0"
     ]
   },
@@ -12658,6 +12659,9 @@
           "projectReferences": {
             "F:\\Study\\ProjectTaskManageApplication\\ProjectTaskManageApplication\\WorkingTask.Data\\WorkingTask.Data.csproj": {
               "projectPath": "F:\\Study\\ProjectTaskManageApplication\\ProjectTaskManageApplication\\WorkingTask.Data\\WorkingTask.Data.csproj"
+            },
+            "F:\\Study\\ProjectTaskManageApplication\\ProjectTaskManageApplication\\WoringTask.Core\\WoringTask.Core.csproj": {
+              "projectPath": "F:\\Study\\ProjectTaskManageApplication\\ProjectTaskManageApplication\\WoringTask.Core\\WoringTask.Core.csproj"
             }
           }
         }

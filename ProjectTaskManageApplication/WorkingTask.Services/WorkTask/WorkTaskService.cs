@@ -4,17 +4,22 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using WoringTask.Core.Data;
 using WorkingTask.Data;
+using WorkingTask.Data.BaseRepository;
 using WorkingTask.Data.Models;
 
 namespace WorkingTask.Services.WorkTask
 {
     public class WorkTaskService : IWorkTaskService
     {
+        //private IRepository<BaseEntity> _testResitory;
+
         private readonly TaskManageContext _taskManageContext;
-        public WorkTaskService()
+        public WorkTaskService()//IUnitOfWork uow
         {
-            _taskManageContext = DbContextFactory.GetCurrentDbContext() as TaskManageContext; 
+            _taskManageContext = DbContextFactory.GetCurrentDbContext() as TaskManageContext;
+            //_uow = uow;
         }
         public async Task<int> AddWrokTask(Data.Models.WorkingTask workingTask)
         {

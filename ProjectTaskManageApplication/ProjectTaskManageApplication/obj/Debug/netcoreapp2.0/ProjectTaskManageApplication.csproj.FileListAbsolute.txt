@@ -25,3 +25,5 @@ F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskMa
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskManageApplication\bin\Debug\netcoreapp2.0\WorkingTask.Data.pdb
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskManageApplication\bin\Debug\netcoreapp2.0\WorkingTask.Services.dll
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskManageApplication\bin\Debug\netcoreapp2.0\WorkingTask.Services.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskManageApplication\bin\Debug\netcoreapp2.0\WoringTask.Core.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\ProjectTaskManageApplication\bin\Debug\netcoreapp2.0\WoringTask.Core.pdb

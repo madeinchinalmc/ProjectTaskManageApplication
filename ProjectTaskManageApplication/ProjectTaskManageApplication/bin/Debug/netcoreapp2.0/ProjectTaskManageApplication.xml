@@ -53,6 +53,17 @@
             <param name="roleName"></param>
             <returns></returns>
         </member>
+        <member name="T:ProjectTaskManageApplication.Controllers.CustomerController">
+            <summary>
+            测试注册用户
+            </summary>
+        </member>
+        <member name="M:ProjectTaskManageApplication.Controllers.CustomerController.#ctor(WorkingTask.Services.CustomerAppService.ICustomerService)">
+            <summary>
+            
+            </summary>
+            <param name="customerService"></param>
+        </member>
         <member name="T:ProjectTaskManageApplication.Controllers.TaskFileController">
             <summary>
             

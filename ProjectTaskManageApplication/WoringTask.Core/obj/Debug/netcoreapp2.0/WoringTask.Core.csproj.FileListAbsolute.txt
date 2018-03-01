@@ -1,0 +1,9 @@
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\bin\Debug\netcoreapp2.0\WoringTask.Core.deps.json
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\bin\Debug\netcoreapp2.0\WoringTask.Core.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\bin\Debug\netcoreapp2.0\WoringTask.Core.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.csprojResolveAssemblyReference.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.csproj.CoreCompileInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.AssemblyInfoInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.AssemblyInfo.cs
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WoringTask.Core\obj\Debug\netcoreapp2.0\WoringTask.Core.pdb

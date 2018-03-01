@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WorkingTask.Data.BaseRepository
+namespace WoringTask.Core.Data
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork:IDisposable
     {
         int SaveChanges();
     }

@@ -5187,6 +5187,7 @@
           "Autofac.Extensions.DependencyInjection": "4.2.0",
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.EntityFrameworkCore": "2.0.1",
+          "WoringTask.Core": "1.0.0",
           "WorkingTask.Data": "1.0.0"
         },
         "compile": {

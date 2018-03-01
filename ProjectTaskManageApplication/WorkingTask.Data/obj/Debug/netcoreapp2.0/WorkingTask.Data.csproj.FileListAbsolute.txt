@@ -7,3 +7,5 @@ F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.D
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.dll
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.pdb
 F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\obj\Debug\netcoreapp2.0\WorkingTask.Data.csprojResolveAssemblyReference.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\bin\Debug\netcoreapp2.0\WoringTask.Core.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Data\bin\Debug\netcoreapp2.0\WoringTask.Core.pdb

@@ -35,6 +35,8 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using WorkingTask.Data.BaseRepository;
+using WoringTask.Core.Data;
 
 namespace ProjectTaskManageApplication
 {
@@ -108,6 +110,11 @@ namespace ProjectTaskManageApplication
             });
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.RegisterAssembly("Service");
+            //注册仓储
+            services.AddScoped<WoringTask.Core.DomainEntity.CustomerService>();
+            services.AddScoped<IRepository<BaseEntity> ,EfRepository<BaseEntity>>();
+            ////注册工作单元
+            //services.AddScoped<IUnitOfWork>(t => new TaskManageContext())
             services.Configure<MemoryCacheEntryOptions>(
                 options => options.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5));
             services.AddSession();

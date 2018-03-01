@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WoringTask.Core\WoringTask.Core.csproj" />
     <ProjectReference Include="..\WorkingTask.Data\WorkingTask.Data.csproj" />
   </ItemGroup>
 

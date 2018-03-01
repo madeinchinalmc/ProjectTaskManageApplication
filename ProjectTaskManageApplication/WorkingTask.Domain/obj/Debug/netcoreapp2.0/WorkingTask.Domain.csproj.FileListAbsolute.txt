@@ -1,0 +1,9 @@
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\bin\Debug\netcoreapp2.0\WorkingTask.Domain.deps.json
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\bin\Debug\netcoreapp2.0\WorkingTask.Domain.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\bin\Debug\netcoreapp2.0\WorkingTask.Domain.pdb
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.csprojResolveAssemblyReference.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.csproj.CoreCompileInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.AssemblyInfoInputs.cache
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.AssemblyInfo.cs
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.dll
+F:\Study\ProjectTaskManageApplication\ProjectTaskManageApplication\WorkingTask.Domain\obj\Debug\netcoreapp2.0\WorkingTask.Domain.pdb
